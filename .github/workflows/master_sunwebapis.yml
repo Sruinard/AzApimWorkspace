@@ -78,7 +78,7 @@ jobs:
   deploy_customer:
     defaults:
       run:
-        working-directory: ${{ env.BOOKING_ROOT }}
+        working-directory: ${{ env.CUSTOMER_ROOT }}
     runs-on: ubuntu-latest
     needs: build
     environment:
