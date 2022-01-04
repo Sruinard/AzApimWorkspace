@@ -41,7 +41,7 @@ jobs:
         with:
           name: python-app
           path: |
-            .
+            ${{ env.BOOKING_ROOT }}
             !venv/
 
   deploy:
@@ -59,7 +59,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: python-app
-          path: .
+          path: ${{ env.BOOKING_ROOT }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
@@ -68,4 +68,4 @@ jobs:
           app-name: 'sunwebapis'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CFA37CE18E2C49D294BBDC684DE42A60 }}
-          # startup-command: "python -m uvicorn main:app --host 0.0.0.0"
+          package:  ${{ env.BOOKING_ROOT }}
