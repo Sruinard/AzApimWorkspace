@@ -9,7 +9,7 @@ app = FastAPI()
 
 @app.get('/')
 def homepage():
-    return "customer application"
+    return "customer application api"
 
 @app.get('/customer')
 def get_customer() -> List[Customer]:
