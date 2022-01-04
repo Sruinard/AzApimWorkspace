@@ -30,7 +30,7 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r ./bookings/requirements.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -50,9 +50,9 @@ jobs:
             !venv/
 
   deploy:
-    # defaults:
-    #   run:
-    #     working-directory: ${{ env.BOOKING_ROOT }}
+    defaults:
+      run:
+        working-directory: ${{ env.BOOKING_ROOT }}
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -76,9 +76,9 @@ jobs:
           package:  ${{ env.BOOKING_ROOT }}
 
   deploy_customer:
-    # defaults:
-    #   run:
-    #     working-directory: ${{ env.BOOKING_ROOT }}
+    defaults:
+      run:
+        working-directory: ${{ env.BOOKING_ROOT }}
     runs-on: ubuntu-latest
     needs: build
     environment:
